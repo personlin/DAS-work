@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "das-opendata-analysis"
+version = "0.1.0"
+description = "DAS OpenDATA analysis workspace powered by DASCore."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "dascore>=0.1.17",
+    "rich>=14.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4",
+    "ruff>=0.12",
+]
+notebook = [
+    "ipykernel>=6.30",
+    "jupyterlab>=4.4",
+    "matplotlib>=3.10",
+    "pandas>=2.3",
+]
+
+[project.scripts]
+das-opendata-scan = "das_opendata_analysis.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/das_opendata_analysis"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
