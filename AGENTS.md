@@ -55,4 +55,6 @@ uv sync --extra dev --extra notebook
 - Update `pyproject.toml` when dependencies or command entry points change.
 - Add tests for stable helper functions; notebooks are not a substitute for
   tests around reusable code.
+- Keep text files normalized to LF using `.gitattributes`; do not introduce
+  CRLF churn except for Windows batch files (`*.bat`, `*.cmd`).
 - Commit after each completed change set.
